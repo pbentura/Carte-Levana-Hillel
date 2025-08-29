@@ -48,6 +48,49 @@
             font-size: 2rem; /* ajuste selon besoin */
             line-height: 1.4;
         }
+
+        /* --- HERO Animations --- */
+        @keyframes fadeZoom {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes buttonHover {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Appliquer le fadeZoom sur le texte principal */
+        .hero-title {
+            animation: fadeZoom 1s ease forwards;
+            opacity: 0;
+        }
+
+        /* Boutons avec effet hover smooth */
+        .hero-buttons a {
+            transition: all 0.3s ease;
+        }
+        .hero-buttons a:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        /* Petites particules dorées flottantes */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: floatParticle 5s ease-in-out infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity:0; }
+            10% { opacity:0.7; }
+            50% { transform: translateY(-20px) translateX(10px); opacity:0.4; }
+            100% { transform: translateY(0) translateX(0); opacity:0; }
+        }
     </style>
 </head>
 <body class="paper">
@@ -62,7 +105,7 @@
 <!-- HERO -->
 <header class="relative overflow-hidden min-h-screen flex items-center justify-center">
     <div class="max-w-5xl mx-auto px-6 text-center">
-        <p class="script text-5xl sm:text-6xl md:text-7xl text-gold">Levana & Hillel</p>
+        <p class="script text-5xl sm:text-6xl md:text-7xl text-gold hero-title">Levana & Hillel</p>
 <!--        <h1 class="serif mt-3 text-xl sm:text-2xl tracking-wide">Invitation au mariage</h1>-->
 
 <!--        <div class="mt-6 text-base sm:text-lg opacity-80 reveal" id="dateLine">-->
@@ -72,12 +115,13 @@
 <!--        </div>-->
 <!--        <div class="mt-3 text-sm uppercase tracking-[0.25em] text-gold">B"H</div>-->
 
-        <div class="mt-8 flex justify-center gap-3">
-            <a href="#invitation" class="px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Invitation</a>
-            <a href="#infos" class="px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Répondre</a>
-        </div>
+        <div class="mt-8 flex justify-center gap-3 hero-buttons">
+        <a href="#invitation" class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Invitation</a>
+        <a href="#infos" class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Répondre</a>
+    </div>
     </div>
 </header>
+
 
 
 <!-- INVITATION TEXT -->
@@ -152,10 +196,13 @@
     </div>
 </section>
 
-<footer class="text-center text-xs opacity-60 pb-10">
-    Site réalisé avec ♥ — remplacez les noms, textes et photos.
-</footer>
-
+<!--<footer class="text-center text-xs opacity-60 pb-10">-->
+<!--    Site réalisé avec ♥ — remplacez les noms, textes et photos.-->
+<!--</footer>-->
+<audio id="weddingMusic" loop>
+    <source src="musique.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas la lecture audio.
+</audio>
 <script>
     // Reveal on scroll
     const onScroll = () => {
@@ -168,7 +215,7 @@
     document.addEventListener('scroll', onScroll, { passive: true });
 
     // Countdown to a specific date (set to 2024-04-01 17:00 local)
-    const target = new Date('2024-04-01T17:00:00');
+    const target = new Date('2026-04-01T17:00:00');
     const cd = document.getElementById('countdown');
     function tick(){
         const now = new Date();
@@ -193,6 +240,64 @@
         a.href = url; a.download = 'mariage-aurelia-eythan.ics'; a.click();
         setTimeout(()=> URL.revokeObjectURL(url), 2000);
     });
+
+    // --- Reveal + HERO Animations ---
+    window.addEventListener('DOMContentLoaded', () => {
+        const heroTitle = document.querySelector('.hero-title');
+        setTimeout(() => heroTitle.style.opacity = '1', 100); // fade in léger
+
+        // Générer des particules dans le HERO
+        const heroSection = document.querySelector('header');
+        for(let i=0;i<15;i++){
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.top = Math.random()*70+'%';
+            p.style.left = Math.random()*90+'%';
+            p.style.animationDuration = (3 + Math.random()*4)+'s';
+            heroSection.appendChild(p);
+        }
+    });
+
+    const music = document.getElementById('weddingMusic');
+    let musicPlayed = false;
+
+    // Fonction pour faire un fade-in progressif
+    function fadeIn(audio, duration = 3000) {
+        audio.volume = 0;
+        audio.play().catch(() => {
+            // si autoplay bloqué, attendre clic utilisateur
+            document.body.addEventListener('click', () => {
+                fadeIn(audio, duration);
+            }, { once: true });
+        });
+
+        let step = 0.02; // incrément du volume
+        let interval = duration / (1 / step * 50); // ajuster l'intervalle
+        const fade = setInterval(() => {
+            if (audio.volume < 1) {
+                audio.volume = Math.min(audio.volume + step, 1);
+            } else {
+                clearInterval(fade);
+            }
+        }, interval);
+    }
+
+    // Détecter quand la section #invitation entre dans la fenêtre
+    const invitationSection = document.getElementById('invitation');
+
+    function checkSectionInView() {
+        if (musicPlayed) return;
+
+        const rect = invitationSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            fadeIn(music, 4000); // fade-in sur 4 secondes
+            musicPlayed = true;
+        }
+    }
+
+    window.addEventListener('scroll', checkSectionInView, { passive: true });
+    window.addEventListener('resize', checkSectionInView);
+    checkSectionInView(); // vérifier immédiatement au chargement
 </script>
 </body>
 </html>
