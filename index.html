@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mariage – Levana & Hillel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Noto+Serif+Hebrew:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg: #faf6f1;
+            --ink:#2a2a2a;
+            --gold:#c8a96a;
+            --rose:#e7d4c5;
+            --deep:#6b3e2e;
+        }
+        html, body { scroll-behavior:smooth; }
+        body { background: var(--bg); color: var(--ink); }
+        .script { font-family: "Great Vibes", cursive; }
+        .serif { font-family: "Playfair Display", serif; }
+        .hebrew { font-family: "Noto Serif Hebrew", serif; }
+
+        /* Subtle paper texture */
+        .paper {
+            background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.9)),
+            radial-gradient(1200px 600px at 10% -10%, rgba(200,169,106,.10), transparent),
+            radial-gradient(1200px 600px at 110% 10%, rgba(231,212,197,.25), transparent);
+        }
+        /* Gold text effect */
+        .text-gold { color: var(--gold); }
+        .divider { height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+        /* Simple fade-up animation */
+        .reveal { opacity:0; transform: translateY(14px); transition: all .8s ease; }
+        .reveal.visible { opacity:1; transform: translateY(0); }
+
+        /* Decorative corner leaves */
+        .corner {
+            position: absolute; pointer-events:none; opacity:.6; filter: drop-shadow(0 2px 4px rgba(0,0,0,.05));
+        }
+
+        .invitation-font {
+            font-family: "Great Vibes", cursive;
+            font-size: 2rem; /* ajuste selon besoin */
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body class="paper">
+<!-- Decorative corners -->
+<svg class="corner top-0 left-0 w-28 sm:w-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+<svg class="corner bottom-0 right-0 w-28 sm:w-40 rotate-180" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+<!-- HERO -->
+<header class="relative overflow-hidden min-h-screen flex items-center justify-center">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <p class="script text-5xl sm:text-6xl md:text-7xl text-gold">Levana & Hillel</p>
+<!--        <h1 class="serif mt-3 text-xl sm:text-2xl tracking-wide">Invitation au mariage</h1>-->
+
+<!--        <div class="mt-6 text-base sm:text-lg opacity-80 reveal" id="dateLine">-->
+<!--            <span class="font-semibold">Lundi 1 avril 2024</span>-->
+<!--            <span class="mx-2">•</span>-->
+<!--            <span class="hebrew">יום שני כב׳ אדר ב׳ 5784</span>-->
+<!--        </div>-->
+<!--        <div class="mt-3 text-sm uppercase tracking-[0.25em] text-gold">B"H</div>-->
+
+        <div class="mt-8 flex justify-center gap-3">
+            <a href="#invitation" class="px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Invitation</a>
+            <a href="#infos" class="px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition">Répondre</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- INVITATION TEXT -->
+<section class="max-w-4xl mx-auto px-6 py-10 sm:py-14" id="invitation">
+    <div class="divider mb-8"></div>
+    <p class="serif text-center reveal">
+        <span class="block text-sm tracking-widest text-gold mb-2">Les familles</span>
+        <span class="font-semibold">M et Mme Roger Cohen – M Marc Baranès – Sabine & Nataniel Baranès</span><br/>
+        <span class="font-semibold">Mme Fortunée Cardoso – Mme Mongia Bentura – Joëlle & Yossef Cardoso</span>
+    </p>
+
+    <p class="text-center mt-6 hebrew reveal">Levana | Hillel</p>
+
+    <p class="invitation-font text-center reveal">
+        Ont la joie de vous faire part du mariage de leurs petits-enfants et enfants
+        et vous remercient de les honorer de leur présence à la houppa.
+    </p>
+
+    <p class="invitation-font text-center mt-6 reveal">
+        Lundi 1 Avril 2024 — Houppa 17h00
+        Au Palace de Villiers
+    </p>
+
+    <div class="mt-8 grid sm:grid-cols-3 gap-4 text-center reveal">
+        <div class="p-5 rounded-2xl bg-white/70 shadow-sm">
+            <div class="text-sm tracking-widest text-gold">Houppa</div>
+            <div class="serif text-xl font-semibold">17h00</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/70 shadow-sm">
+            <div class="text-sm tracking-widest text-gold">Date</div>
+            <div class="serif text-xl font-semibold">Lundi 1 Avril 2024</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/70 shadow-sm">
+            <div class="text-sm tracking-widest text-gold">Réception</div>
+            <div class="serif text-xl font-semibold">à suivre</div>
+        </div>
+    </div>
+</section>
+
+<!-- INFOS & MAP -->
+<section class="max-w-5xl mx-auto px-6 py-10 sm:py-16" id="infos">
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="reveal">
+            <h2 class="serif text-2xl font-semibold">Lieu de la réception</h2>
+            <p class="mt-2 opacity-80">Palace de Villiers<br>12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
+            <div class="mt-4 text-sm opacity-80">Une tenue dans le respect de la Halakha réjouira les mariés.</div>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a class="px-4 py-2 rounded-xl bg-[color:var(--gold)]/90 text-white hover:bg-[color:var(--gold)]" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Palace%20de%20Villiers%2C%2095400">Itinéraire</a>
+                <button id="addToCalendar" class="px-4 py-2 rounded-xl border border-[color:var(--gold)] hover:bg-[color:var(--rose)]/40">Ajouter au calendrier</button>
+            </div>
+
+            <div id="countdown" class="mt-6 text-sm"></div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-md reveal">
+            <iframe title="Carte" class="w-full aspect-[4/3]" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.814640923826!2d2.415!3d49.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6124a9b0f6f71%3A0x0!2sPalace%20de%20Villiers!5e0!3m2!1sfr!2sfr!4v1711999999999"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="max-w-3xl mx-auto px-6 pb-20" id="rsvp">
+    <div class="divider mb-8"></div>
+    <div class="bg-white/80 p-6 sm:p-8 rounded-3xl shadow-sm reveal text-center">
+        <h2 class="serif text-2xl font-semibold">Répondez s’il vous plaît</h2>
+        <p class="mt-2 opacity-80">Merci de confirmer votre présence pour nous aider à organiser au mieux cette journée.</p>
+        <a href="https://forms.gle/" target="_blank" class="inline-block mt-5 px-6 py-3 rounded-2xl bg-[color:var(--deep)] text-white hover:opacity-90">Ouvrir le formulaire</a>
+        <p class="mt-4 text-xs opacity-70">Remplacez le lien par votre formulaire Google/Typeform.</p>
+    </div>
+</section>
+
+<footer class="text-center text-xs opacity-60 pb-10">
+    Site réalisé avec ♥ — remplacez les noms, textes et photos.
+</footer>
+
+<script>
+    // Reveal on scroll
+    const onScroll = () => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 80) el.classList.add('visible');
+        });
+    };
+    onScroll();
+    document.addEventListener('scroll', onScroll, { passive: true });
+
+    // Countdown to a specific date (set to 2024-04-01 17:00 local)
+    const target = new Date('2024-04-01T17:00:00');
+    const cd = document.getElementById('countdown');
+    function tick(){
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) { cd.textContent = "C'est aujourd'hui !"; return; }
+        const d = Math.floor(diff/86400000);
+        const h = Math.floor((diff%86400000)/3600000);
+        const m = Math.floor((diff%3600000)/60000);
+        cd.textContent = `Dans ${d} j ${h} h ${m} min`;
+        requestAnimationFrame(() => setTimeout(tick, 60000));
+    }
+    tick();
+
+    // Add to Calendar (.ics)
+    document.getElementById('addToCalendar').addEventListener('click', () => {
+        const dtStart = '20240401T150000Z'; // 17:00 Paris ≈ 15:00Z heure d'hiver -> ajustez si besoin
+        const dtEnd   = '20240401T210000Z';
+        const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Wedding Card//FR\nBEGIN:VEVENT\nUID:${Date.now()}@wedding\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Mariage – Aurélia & Eythan\nLOCATION:Palace de Villiers, 12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel\nDESCRIPTION:Houppa 17h00 — Réception à suivre\nEND:VEVENT\nEND:VCALENDAR`;
+        const blob = new Blob([ics], {type:'text/calendar'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'mariage-aurelia-eythan.ics'; a.click();
+        setTimeout(()=> URL.revokeObjectURL(url), 2000);
+    });
+</script>
+</body>
+</html>
