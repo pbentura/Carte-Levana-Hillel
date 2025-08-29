@@ -80,7 +80,7 @@
 
         .invitation-font {
             font-family: "Great Vibes", cursive;
-            font-size: 2rem; /* ajuste selon besoin */
+            /*font-size: 2rem; !* ajuste selon besoin *!*/
             line-height: 1.4;
         }
 
@@ -177,15 +177,16 @@
         <!--        </div>-->
         <!--        <div class="mt-3 text-sm uppercase tracking-[0.25em] text-gold">B"H</div>-->
 
-<!--        <div class="mt-8 flex justify-center gap-6 hero-buttons">-->
-<!--            <a href="#invitation" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Invitation</a>-->
-<!--            <a href="#infos" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Répondre</a>-->
-<!--        </div>-->
+        <!--        <div class="mt-8 flex justify-center gap-6 hero-buttons">-->
+        <!--            <a href="#invitation" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Invitation</a>-->
+        <!--            <a href="#infos" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Répondre</a>-->
+        <!--        </div>-->
         <div class="mt-8 flex justify-center gap-3 hero-buttons">
-            <a href="#invitation" class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Invitation</a>
-            <a href="#infos" class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Répondre</a>
+            <a href="#invitation"
+               class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Invitation</a>
+            <a href="#infos"
+               class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Répondre</a>
         </div>
-
 
 
     </div>
@@ -195,23 +196,62 @@
 <!-- INVITATION TEXT -->
 <section class="max-w-4xl mx-auto px-6 py-10 sm:py-14" id="invitation">
     <div class="divider mb-8"></div>
-    <p class="serif text-center reveal">
-        <span class="block text-sm tracking-widest text-gold mb-2">Les familles</span>
-        <span class="font-semibold">M et Mme Roger Cohen – M Marc Baranès – Sabine & Nataniel Baranès</span><br/>
-        <span class="font-semibold">Mme Fortunée Cardoso – Mme Mongia Bentura – Joëlle & Yossef Cardoso</span>
-    </p>
+    <div class="reveal mb-8">
+        <p class="text-center invitation-font text-xl tracking-widest mb-6">Les familles</p>
+        <div class="grid grid-cols-2 gap-8 mb-4">
+            <!-- Famille de gauche -->
+            <div class="text-left">
+                <p class="invitation-font text-lg mb-1">M et Mme Roger Cohen</p>
+                <p class="invitation-font text-lg mb-1">M Marc Baranès</p>
+                <p class="invitation-font text-lg">Sabine et Nataniel Baranès</p>
+            </div>
 
-    <p class="text-center mt-6 hebrew reveal">Levana | Hillel</p>
+            <!-- Famille de droite -->
+            <div class="text-right">
+                <p class="invitation-font text-lg  mb-1">Mme Fortunée Cardoso</p>
+                <p class="invitation-font text-lg  mb-1">Mme Mongia Bentura</p>
+                <p class="invitation-font text-lg ">Joëlle et Yossef Cardoso</p>
+            </div>
+        </div>
+    </div>
 
-    <p class="invitation-font text-center reveal">
-        Ont la joie de vous faire part du mariage de leurs petits-enfants et enfants
-        et vous remercient de les honorer de leur présence à la houppa.
-    </p>
+    <div class="reveal mb-8">
+        <p class="invitation-font text-xl text-center reveal">
+            Ont la joie de vous faire part du mariage de leurs petits-enfants et enfants</p>
+    </div>
 
-    <p class="invitation-font text-center mt-6 reveal">
-        Lundi 1 Avril 2024 — Houppa 17h00
-        Au Palace de Villiers
-    </p>
+    <div class="reveal mb-8">
+        <div class="text-center">
+            <h1 class="invitation-font text-4xl sm:text-5xl font-light text-gold mb-2">
+                Levana & Hillel
+            </h1>
+            <div class="flex justify-center hebrew items-center gap-4 text-3xl text-gold">
+                <span>לבנה</span>
+                <span>•</span>
+                <span>הלל</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="reveal mb-8">
+        <p class="text-center invitation-font text-xl">
+            et vous remercient de les honorer de votre présence à la
+            <span class="font-semibold">Houppa</span> qui aura lieu le
+        </p>
+    </div>
+
+<!--    <p class="invitation-font text-lg text-center mt-6 reveal">-->
+<!--        Lundi 1 Avril 2024 — Houppa 17h00-->
+<!--        Au Palace de Villiers-->
+<!--    </p>-->
+    <div class="reveal mb-8">
+        <div class="text-center">
+            <h2 class="invitation-font text-3xl sm:text-4xl font-light mb-2">
+                Lundi 1 Avril 2024
+            </h2>
+            <p class="text-2xl text-gold hebrew tracking-wide">יום ש' כב אדר ב' תשפ"ד</p>
+        </div>
+    </div>
 
     <div class="mt-8 grid sm:grid-cols-3 gap-4 text-center reveal">
         <div class="p-5 rounded-2xl bg-white/70 shadow-md">
@@ -269,7 +309,7 @@
            class="inline-block mt-4 script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
             Votre réponse
         </a>
-<!--        <p class="mt-4 text-xs opacity-70">Remplacez le lien par votre formulaire Google/Typeform.</p>-->
+        <!--        <p class="mt-4 text-xs opacity-70">Remplacez le lien par votre formulaire Google/Typeform.</p>-->
     </div>
 </section>
 
