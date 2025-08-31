@@ -10,149 +10,9 @@
           rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #faf6f1;
-            --ink: #2a2a2a;
-            --gold: #c8a96a;
-            --rose: #e7d4c5;
-            --deep: #6b3e2e;
-        }
-
-        html, body {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--ink);
-        }
-
-        .script {
-            font-family: "Great Vibes", cursive;
-        }
-
-        .serif {
-            font-family: "Playfair Display", serif;
-        }
-
-        .hebrew {
-            font-family: "Noto Serif Hebrew", serif;
-        }
-
-        /* Subtle paper texture */
-        .paper {
-            background: linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .9)),
-            radial-gradient(1200px 600px at 10% -10%, rgba(200, 169, 106, .10), transparent),
-            radial-gradient(1200px 600px at 110% 10%, rgba(231, 212, 197, .25), transparent);
-        }
-
-        /* Gold text effect */
-        .text-gold {
-            color: var(--gold);
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        /* Simple fade-up animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: all .8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Decorative corner leaves */
-        .corner {
-            position: absolute;
-            pointer-events: none;
-            opacity: .6;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .05));
-        }
-
-        .invitation-font {
-            font-family: "Great Vibes", cursive;
-            /*font-size: 2rem; !* ajuste selon besoin *!*/
-            line-height: 1.4;
-        }
-
-        /* --- HERO Animations --- */
-        @keyframes fadeZoom {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes buttonHover {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-2px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* Appliquer le fadeZoom sur le texte principal */
-        .hero-title {
-            animation: fadeZoom 1s ease forwards;
-            opacity: 0;
-        }
-
-        /* Boutons avec effet hover smooth */
-        .hero-buttons a {
-            transition: all 0.3s ease;
-        }
-
-        .hero-buttons a:hover {
-            transform: translateY(-3px) scale(1.03);
-        }
-
-        /* Petites particules dorées flottantes */
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: floatParticle 5s ease-in-out infinite;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            50% {
-                transform: translateY(-20px) translateX(10px);
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="paper">
 <!-- Decorative corners -->
 <svg class="corner top-0 left-0 w-28 sm:w-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
@@ -197,26 +57,26 @@
 <section class="max-w-4xl mx-auto px-6 py-10 sm:py-14" id="invitation">
     <div class="divider mb-8"></div>
     <div class="reveal mb-8">
-        <p class="text-center invitation-font text-xl tracking-widest mb-6">Les familles</p>
+        <p class="text-center hebrew text-xl tracking-widest mb-6">בס״ד</p>
         <div class="grid grid-cols-2 gap-8 mb-4">
             <!-- Famille de gauche -->
             <div class="text-left">
-                <p class="invitation-font text-lg mb-1">M et Mme Roger Cohen</p>
-                <p class="invitation-font text-lg mb-1">M Marc Baranès</p>
-                <p class="invitation-font text-lg">Sabine et Nataniel Baranès</p>
+                <p class="invitation-font text-2xl mb-1">M et Mme Roger Cohen</p>
+                <p class="invitation-font text-2xl mb-1">M Marc Baranès</p>
+                <p class="invitation-font text-2xl">Sabine et Nataniel Baranès</p>
             </div>
 
             <!-- Famille de droite -->
             <div class="text-right">
-                <p class="invitation-font text-lg  mb-1">Mme Fortunée Cardoso</p>
-                <p class="invitation-font text-lg  mb-1">Mme Mongia Bentura</p>
-                <p class="invitation-font text-lg ">Joëlle et Yossef Cardoso</p>
+                <p class="invitation-font text-2xl  mb-1">Mme Fortunée Cardoso</p>
+                <p class="invitation-font text-2xl  mb-1">Mme Mongia Bentura</p>
+                <p class="invitation-font text-2xl ">Joëlle et Yossef Cardoso</p>
             </div>
         </div>
     </div>
 
     <div class="reveal mb-8">
-        <p class="invitation-font text-xl text-center reveal">
+        <p class="invitation-font text-3xl text-center reveal">
             Ont la joie de vous faire part du mariage de leurs petits-enfants et enfants</p>
     </div>
 
@@ -234,77 +94,100 @@
     </div>
 
     <div class="reveal mb-8">
-        <p class="text-center invitation-font text-xl">
-            et vous remercient de les honorer de votre présence à la
-            <span class="font-semibold">Houppa</span> qui aura lieu le
+        <p class="text-center invitation-font text-3xl">
+            et vous remercient de les honorer de votre présence à la Houppa qui aura lieu le
         </p>
     </div>
 
-<!--    <p class="invitation-font text-lg text-center mt-6 reveal">-->
-<!--        Lundi 1 Avril 2024 — Houppa 17h00-->
-<!--        Au Palace de Villiers-->
-<!--    </p>-->
     <div class="reveal mb-8">
         <div class="text-center">
             <h2 class="invitation-font text-3xl sm:text-4xl font-light mb-2">
                 Lundi 1 Avril 2024
             </h2>
-            <p class="text-2xl text-gold hebrew tracking-wide">יום ש' כב אדר ב' תשפ"ד</p>
+            <p class="text-2xl text-gold hebrew tracking-wide">יום ש' כב אדר ב' תשפ"ד</p><br>
+            <p class="invitation-font text-3xl sm:text-4xl font-light">à 17h00</p>
         </div>
     </div>
 
-    <div class="mt-8 grid sm:grid-cols-3 gap-4 text-center reveal">
-        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
-            <div class="text-sm tracking-widest text-gold">Houppa</div>
-            <div class="serif text-xl font-semibold">17h00</div>
-        </div>
-        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
-            <div class="text-sm tracking-widest text-gold">Date</div>
-            <div class="serif text-xl font-semibold">Lundi 1 Avril 2024</div>
-        </div>
-        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
-            <div class="text-sm tracking-widest text-gold">Réception</div>
-            <div class="serif text-xl font-semibold">à suivre</div>
-        </div>
+    <div class="reveal mb-8">
+        <p class="text-center invitation-font text-3xl">
+            Ainsi qu'à la réception qui suivra
+        </p>
     </div>
+
+    <div class="reveal mb-8 text-center">
+        <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Au Palace de Villiers</h2>
+        <p class="invitation-font text-3xl">12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
+        <p class="mt-4 text-xl invitation-font">Une tenue dans le respect de la Halakha réjouira les mariés.</p>
+    </div>
+
 </section>
 
 <!-- INFOS & MAP -->
-<section class="max-w-5xl mx-auto px-6 py-10 sm:py-16" id="infos">
+<section class="max-w-4xl mx-auto px-6 py-10 sm:py-14" id="infos">
+    <div class="divider mb-8"></div>
     <div class="grid lg:grid-cols-2 gap-8 items-start">
         <div class="reveal">
-            <h2 class="serif text-2xl font-semibold">Lieu de la réception</h2>
-            <p class="mt-2 opacity-80">Palace de Villiers<br>12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
-            <div class="mt-4 text-sm opacity-80">Une tenue dans le respect de la Halakha réjouira les mariés.</div>
+            <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Au Palace de Villiers</h2>
+            <p class="invitation-font text-3xl">12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
+            <p class="mt-4 text-xl invitation-font">Une tenue dans le respect de la Halakha réjouira les mariés.</p>
 
             <div class="mt-6 flex flex-wrap gap-3">
-                <a class="px-4 py-2 rounded-xl bg-[color:var(--gold)]/90 text-white hover:bg-[color:var(--gold)]"
+                <a class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl"
                    target="_blank"
                    href="https://www.google.com/maps/search/?api=1&query=Palace%20de%20Villiers%2C%2095400">Itinéraire</a>
                 <button id="addToCalendar"
-                        class="px-4 py-2 rounded-xl border border-[color:var(--gold)] hover:bg-[color:var(--rose)]/40">
+                        class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
                     Ajouter au calendrier
                 </button>
             </div>
-
-            <div id="countdown" class="mt-6 text-sm"></div>
         </div>
 
         <div class="rounded-2xl overflow-hidden shadow-md reveal">
-            <iframe title="Carte" class="w-full aspect-[4/3]" style="border:0" loading="lazy" allowfullscreen
+            <iframe
+                    title="Carte"
+                    class="w-full aspect-[4/3]"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.814640923826!2d2.415!3d49.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6124a9b0f6f71%3A0x0!2sPalace%20de%20Villiers!5e0!3m2!1sfr!2sfr!4v1711999999999"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.814640923826!2d2.415!3d49.000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6124a9b0f6f71%3A0x0!2s12%20Avenue%20des%20Entrepreneurs%2C%2095400%20Villiers-le-Bel!5e0!3m2!1sfr!2sfr!4v1712000000000">
+            </iframe>
+        </div>
+
+    </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 py-10 sm:py-14">
+    <div class="divider mb-8"></div>
+    <div class="mt-8 grid sm:grid-cols-4 gap-4 text-center reveal">
+        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
+            <div class="text-4xl invitation-font text-gold">Jours</div>
+            <div id="days" class="invitation-font text-4xl">0</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
+            <div class="text-4xl invitation-font text-gold">Heures</div>
+            <div id="hours" class="invitation-font text-4xl">0</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
+            <div class="text-4xl invitation-font text-gold">Minutes</div>
+            <div id="minutes" class="invitation-font text-4xl">0</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/70 shadow-md">
+            <div class="text-4xl invitation-font text-gold">Secondes</div>
+            <div id="seconds" class="invitation-font text-4xl">0</div>
         </div>
     </div>
+    <div id="countdown" class="mt-6 text-sm text-center opacity-80 reveal"></div>
 </section>
 
 <!-- RSVP -->
 <section class="max-w-3xl mx-auto px-6 pb-20" id="rsvp">
     <div class="divider mb-8"></div>
-    <div class="bg-white/80 p-6 sm:p-8 rounded-3xl shadow-sm reveal text-center">
-        <h2 class="serif text-2xl font-semibold">Répondez s’il vous plaît</h2>
-        <p class="mt-2 opacity-80">Merci de confirmer votre présence pour nous aider à organiser au mieux cette
-            journée.</p>
+    <div class="bg-white/80 p-6 sm:p-8 rounded-3xl  reveal text-center">
+        <h2 class="invitation-font text-gold text-[color:var(--deep)] text-4xl">Nous serions très heureux de vous voir parmi nous</h2>
+<!--        <p class="mt-2 opacity-80">Merci de confirmer votre présence pour nous aider à organiser au mieux cette-->
+<!--            journée.</p>-->
         <a href="https://forms.gle/" target="_blank"
            class="inline-block mt-4 script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
             Votre réponse
@@ -313,115 +196,17 @@
     </div>
 </section>
 
-<!--<footer class="text-center text-xs opacity-60 pb-10">-->
+
+<footer class="text-gold text-[color:var(--deep)] text-center text-xs opacity-60 pb-10 reveal">
+    <div class="divider mb-8"></div>
 <!--    Site réalisé avec ♥ — remplacez les noms, textes et photos.-->
-<!--</footer>-->
+    <p>Site réalisé par <a class="underline" href="https://www.linkedin.com/in/pinhas-bentura-1ab82029b">Pinhas Bentura</a></p>
+</footer>
 <audio id="weddingMusic" loop>
     <source src="musique.mp3" type="audio/mpeg">
     Votre navigateur ne supporte pas la lecture audio.
 </audio>
-<script>
-    // Reveal on scroll
-    const onScroll = () => {
-        document.querySelectorAll('.reveal').forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 80) el.classList.add('visible');
-        });
-    };
-    onScroll();
-    document.addEventListener('scroll', onScroll, {passive: true});
 
-    // Countdown to a specific date (set to 2024-04-01 17:00 local)
-    const target = new Date('2026-04-01T17:00:00');
-    const cd = document.getElementById('countdown');
-
-    function tick() {
-        const now = new Date();
-        const diff = target - now;
-        if (diff <= 0) {
-            cd.textContent = "C'est aujourd'hui !";
-            return;
-        }
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        cd.textContent = `Dans ${d} j ${h} h ${m} min`;
-        requestAnimationFrame(() => setTimeout(tick, 60000));
-    }
-
-    tick();
-
-    // Add to Calendar (.ics)
-    document.getElementById('addToCalendar').addEventListener('click', () => {
-        const dtStart = '20240401T150000Z'; // 17:00 Paris ≈ 15:00Z heure d'hiver -> ajustez si besoin
-        const dtEnd = '20240401T210000Z';
-        const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Wedding Card//FR\nBEGIN:VEVENT\nUID:${Date.now()}@wedding\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Mariage – Aurélia & Eythan\nLOCATION:Palace de Villiers, 12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel\nDESCRIPTION:Houppa 17h00 — Réception à suivre\nEND:VEVENT\nEND:VCALENDAR`;
-        const blob = new Blob([ics], {type: 'text/calendar'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'mariage-aurelia-eythan.ics';
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-    });
-
-    // --- Reveal + HERO Animations ---
-    window.addEventListener('DOMContentLoaded', () => {
-        const heroTitle = document.querySelector('.hero-title');
-        setTimeout(() => heroTitle.style.opacity = '1', 100); // fade in léger
-
-        // Générer des particules dans le HERO
-        const heroSection = document.querySelector('header');
-        for (let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.top = Math.random() * 70 + '%';
-            p.style.left = Math.random() * 90 + '%';
-            p.style.animationDuration = (3 + Math.random() * 10) + 's';
-            heroSection.appendChild(p);
-        }
-    });
-
-    const music = document.getElementById('weddingMusic');
-    let musicPlayed = false;
-
-    // Fonction pour faire un fade-in progressif
-    function fadeIn(audio, duration = 3000) {
-        audio.volume = 0;
-        audio.play().catch(() => {
-            // si autoplay bloqué, attendre clic utilisateur
-            document.body.addEventListener('click', () => {
-                fadeIn(audio, duration);
-            }, {once: true});
-        });
-
-        let step = 0.02; // incrément du volume
-        let interval = duration / (1 / step * 50); // ajuster l'intervalle
-        const fade = setInterval(() => {
-            if (audio.volume < 1) {
-                audio.volume = Math.min(audio.volume + step, 1);
-            } else {
-                clearInterval(fade);
-            }
-        }, interval);
-    }
-
-    // Détecter quand la section #invitation entre dans la fenêtre
-    const invitationSection = document.getElementById('invitation');
-
-    function checkSectionInView() {
-        if (musicPlayed) return;
-
-        const rect = invitationSection.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            fadeIn(music, 4000); // fade-in sur 4 secondes
-            musicPlayed = true;
-        }
-    }
-
-    window.addEventListener('scroll', checkSectionInView, {passive: true});
-    window.addEventListener('resize', checkSectionInView);
-    checkSectionInView(); // vérifier immédiatement au chargement
-</script>
+<script src="index.js"></script>
 </body>
 </html>

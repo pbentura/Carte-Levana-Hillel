@@ -1,0 +1,139 @@
+:root {
+    --bg: #faf6f1;
+    --ink: #2a2a2a;
+    --gold: #c8a96a;
+    --rose: #e7d4c5;
+    --deep: #6b3e2e;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+.script {
+    font-family: "Great Vibes", cursive;
+}
+
+.serif {
+    font-family: "Playfair Display", serif;
+}
+
+.hebrew {
+    font-family: "Noto Serif Hebrew", serif;
+}
+
+/* Subtle paper texture */
+.paper {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .9)),
+    radial-gradient(1200px 600px at 10% -10%, rgba(200, 169, 106, .10), transparent),
+    radial-gradient(1200px 600px at 110% 10%, rgba(231, 212, 197, .25), transparent);
+}
+
+/* Gold text effect */
+.text-gold {
+    color: var(--gold);
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Simple fade-up animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: all .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Decorative corner leaves */
+.corner {
+    position: absolute;
+    pointer-events: none;
+    opacity: .6;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .05));
+}
+
+.invitation-font {
+    font-family: "Great Vibes", cursive;
+    /*font-size: 2rem; !* ajuste selon besoin *!*/
+    line-height: 1.4;
+}
+
+/* --- HERO Animations --- */
+@keyframes fadeZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes buttonHover {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Appliquer le fadeZoom sur le texte principal */
+.hero-title {
+    animation: fadeZoom 1s ease forwards;
+    opacity: 0;
+}
+
+/* Boutons avec effet hover smooth */
+.hero-buttons a {
+    transition: all 0.3s ease;
+}
+
+.hero-buttons a:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* Petites particules dorées flottantes */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: floatParticle 5s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+}
