@@ -24,7 +24,8 @@ body {
 }
 
 .hebrew {
-    font-family: "Noto Serif Hebrew", serif;
+    font-family: 'Frank Ruhl Libre', serif;
+    /*direction: rtl;*/
 }
 
 /* Subtle paper texture */

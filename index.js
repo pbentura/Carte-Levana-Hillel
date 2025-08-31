@@ -58,21 +58,21 @@ document.getElementById('addToCalendar').addEventListener('click', () => {
 });
 
 // --- Reveal + HERO Animations ---
-window.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    setTimeout(() => heroTitle.style.opacity = '1', 100); // fade in léger
-
-    // Générer des particules dans le HERO
-    const heroSection = document.querySelector('header');
-    for (let i = 0; i < 30; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.top = Math.random() * 70 + '%';
-        p.style.left = Math.random() * 90 + '%';
-        p.style.animationDuration = (3 + Math.random() * 10) + 's';
-        heroSection.appendChild(p);
-    }
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//     const heroTitle = document.querySelector('.hero-title');
+//     setTimeout(() => heroTitle.style.opacity = '1', 100); // fade in léger
+//
+//     // Générer des particules dans le HERO
+//     const heroSection = document.querySelector('header');
+//     for (let i = 0; i < 30; i++) {
+//         const p = document.createElement('div');
+//         p.className = 'particle';
+//         p.style.top = Math.random() * 70 + '%';
+//         p.style.left = Math.random() * 90 + '%';
+//         p.style.animationDuration = (3 + Math.random() * 10) + 's';
+//         heroSection.appendChild(p);
+//     }
+// });
 
 const music = document.getElementById('weddingMusic');
 let musicPlayed = false;

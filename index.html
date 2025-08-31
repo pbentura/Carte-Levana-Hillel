@@ -10,6 +10,7 @@
           rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,30 +26,16 @@
 </svg>
 
 <!-- HERO -->
-<header class="relative overflow-hidden min-h-screen flex items-center justify-center">
-    <div class="max-w-5xl mx-auto px-6 text-center">
+<header class="relative overflow-hidden min-h-screen flex items-center justify-center
+               bg-[url('fond.png')] bg-cover bg-center">
+    <div class="max-w-6xl mx-auto px-10 py-10 text-center bg-white/60 rounded-2xl">
         <p class="script text-5xl sm:text-6xl md:text-7xl text-gold hero-title">Levana & Hillel</p>
-        <!--        <h1 class="serif mt-3 text-xl sm:text-2xl tracking-wide">Invitation au mariage</h1>-->
-
-        <!--        <div class="mt-6 text-base sm:text-lg opacity-80 reveal" id="dateLine">-->
-        <!--            <span class="font-semibold">Lundi 1 avril 2024</span>-->
-        <!--            <span class="mx-2">•</span>-->
-        <!--            <span class="hebrew">יום שני כב׳ אדר ב׳ 5784</span>-->
-        <!--        </div>-->
-        <!--        <div class="mt-3 text-sm uppercase tracking-[0.25em] text-gold">B"H</div>-->
-
-        <!--        <div class="mt-8 flex justify-center gap-6 hero-buttons">-->
-        <!--            <a href="#invitation" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Invitation</a>-->
-        <!--            <a href="#infos" class="script text-gold hero-title px-8 py-4 rounded-3xl border border-[color:var(&#45;&#45;gold)] text-[color:var(&#45;&#45;deep)] hover:bg-[color:var(&#45;&#45;gold)] hover:text-white transition-transform duration-300 transform hover:scale-105 hover:-translate-y-1 text-xl sm:text-2xl font-semibold">Répondre</a>-->
-        <!--        </div>-->
         <div class="mt-8 flex justify-center gap-3 hero-buttons">
             <a href="#invitation"
                class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Invitation</a>
             <a href="#infos"
                class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">Répondre</a>
         </div>
-
-
     </div>
 </header>
 
@@ -58,54 +45,61 @@
     <div class="divider mb-8"></div>
     <div class="reveal mb-8">
         <p class="text-center hebrew text-xl tracking-widest mb-6">בס״ד</p>
+        <h2 class="hebrew text-center text-gold text-4xl sm:text-4xl font-light mb-6">ענבי הגפן בענבי הגפן דבר נאה ומתקבל</h2>
         <div class="grid grid-cols-2 gap-8 mb-4">
-            <!-- Famille de gauche -->
             <div class="text-left">
-                <p class="invitation-font text-2xl mb-1">M et Mme Roger Cohen</p>
-                <p class="invitation-font text-2xl mb-1">M Marc Baranès</p>
-                <p class="invitation-font text-2xl">Sabine et Nataniel Baranès</p>
+                <p class="invitation-font text-2xl mb-1">Mme Fortunée Freoua</p>
+                <p class="invitation-font text-2xl mb-1">Mr & Mme Arié Freoua</p>
             </div>
 
-            <!-- Famille de droite -->
             <div class="text-right">
-                <p class="invitation-font text-2xl  mb-1">Mme Fortunée Cardoso</p>
-                <p class="invitation-font text-2xl  mb-1">Mme Mongia Bentura</p>
-                <p class="invitation-font text-2xl ">Joëlle et Yossef Cardoso</p>
+                <p class="invitation-font text-2xl mb-1">Mme Marcelle Cohen</p>
+                <p class="invitation-font text-2xl mb-1">Mr & Mme Aharon Ohnona</p>
             </div>
         </div>
     </div>
 
     <div class="reveal mb-8">
         <p class="invitation-font text-3xl text-center reveal">
-            Ont la joie de vous faire part du mariage de leurs petits-enfants et enfants</p>
+            Remercient Hachem de pouvoir vous annoncer le mariage de leurs petits-enfants et enfants</p>
     </div>
 
     <div class="reveal mb-8">
         <div class="text-center">
             <h1 class="invitation-font text-4xl sm:text-5xl font-light text-gold mb-2">
-                Levana & Hillel
+                <span>Levana</span>
+                <span class="mx-4">&</span>
+                <span>Hillel</span>
             </h1>
-            <div class="flex justify-center hebrew items-center gap-4 text-3xl text-gold">
-                <span>לבנה</span>
-                <span>•</span>
-                <span>הלל</span>
+
+            <div class="flex justify-center text-3xl text-gold hebrew gap-x-16">
+                <!-- Colonne Levana -->
+                <div class="-translate-x-12">
+                    <span>לבנה עדן צביה</span>
+                </div>
+
+                <!-- Colonne Hillel -->
+                <div class="flex flex-col items-center">
+                    <span>הלל</span>
+                </div>
             </div>
         </div>
     </div>
 
+
     <div class="reveal mb-8">
         <p class="text-center invitation-font text-3xl">
-            et vous remercient de les honorer de votre présence à la Houppa qui aura lieu le
+            et seraient honorés de votre présence à la houppa qui se déroulera בע״ה le
         </p>
     </div>
 
     <div class="reveal mb-8">
         <div class="text-center">
             <h2 class="invitation-font text-3xl sm:text-4xl font-light mb-2">
-                Lundi 1 Avril 2024
+                Lundi 20 Octobre 2025
             </h2>
-            <p class="text-2xl text-gold hebrew tracking-wide">יום ש' כב אדר ב' תשפ"ד</p><br>
-            <p class="invitation-font text-3xl sm:text-4xl font-light">à 17h00</p>
+            <p class="text-3xl text-gold hebrew tracking-wide">כ״ט חשׁון התשׁפ״ו</p><br>
+            <p class="invitation-font text-3xl sm:text-4xl font-light">à 18h00 précises</p>
         </div>
     </div>
 
@@ -116,7 +110,7 @@
     </div>
 
     <div class="reveal mb-8 text-center">
-        <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Au Palace de Villiers</h2>
+        <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Dans les salons "Palace de Villiers"</h2>
         <p class="invitation-font text-3xl">12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
         <p class="mt-4 text-xl invitation-font">Une tenue dans le respect de la Halakha réjouira les mariés.</p>
     </div>
@@ -128,19 +122,32 @@
     <div class="divider mb-8"></div>
     <div class="grid lg:grid-cols-2 gap-8 items-start">
         <div class="reveal">
-            <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Au Palace de Villiers</h2>
+            <h2 class="invitation-font text-4xl sm:text-4xl font-light mb-2">Palace de Villiers</h2>
             <p class="invitation-font text-3xl">12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel</p>
-            <p class="mt-4 text-xl invitation-font">Une tenue dans le respect de la Halakha réjouira les mariés.</p>
 
             <div class="mt-6 flex flex-wrap gap-3">
-                <a class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl"
+                <!-- Google Maps -->
+                <a class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl flex items-center gap-2"
                    target="_blank"
-                   href="https://www.google.com/maps/search/?api=1&query=Palace%20de%20Villiers%2C%2095400">Itinéraire</a>
-                <button id="addToCalendar"
-                        class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
-                    Ajouter au calendrier
-                </button>
+                   href="https://www.google.com/maps/search/?api=1&query=Palace%20de%20Villiers%2C%2095400">
+                    Maps <i class="fa-brands fa-google"></i>
+                </a>
+
+                <!-- Waze -->
+                <a class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl flex items-center gap-2"
+                   target="_blank"
+                   href="https://waze.com/ul?q=Palace%20de%20Villiers%2C%2095400">
+                    Waze <i class="fa-brands fa-waze text-xl"></i>
+                </a>
+
+                <!-- Apple Plans -->
+                <a class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl flex items-center gap-2"
+                   target="_blank"
+                   href="http://maps.apple.com/?q=Palace+de+Villiers,+95400+Villiers-le-Bel">
+                    Plans <i class="fa-brands fa-apple"></i>
+                </a>
             </div>
+
         </div>
 
         <div class="rounded-2xl overflow-hidden shadow-md reveal">
@@ -186,8 +193,6 @@
     <div class="divider mb-8"></div>
     <div class="bg-white/80 p-6 sm:p-8 rounded-3xl  reveal text-center">
         <h2 class="invitation-font text-gold text-[color:var(--deep)] text-4xl">Nous serions très heureux de vous voir parmi nous</h2>
-<!--        <p class="mt-2 opacity-80">Merci de confirmer votre présence pour nous aider à organiser au mieux cette-->
-<!--            journée.</p>-->
         <a href="https://forms.gle/" target="_blank"
            class="inline-block mt-4 script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
             Votre réponse
