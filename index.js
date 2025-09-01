@@ -44,18 +44,18 @@ tick(); // lancement immédiat
 
 
 // Add to Calendar (.ics)
-document.getElementById('addToCalendar').addEventListener('click', () => {
-    const dtStart = '20240401T150000Z'; // 17:00 Paris ≈ 15:00Z heure d'hiver -> ajustez si besoin
-    const dtEnd = '20240401T210000Z';
-    const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Wedding Card//FR\nBEGIN:VEVENT\nUID:${Date.now()}@wedding\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Mariage – Aurélia & Eythan\nLOCATION:Palace de Villiers, 12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel\nDESCRIPTION:Houppa 17h00 — Réception à suivre\nEND:VEVENT\nEND:VCALENDAR`;
-    const blob = new Blob([ics], {type: 'text/calendar'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'mariage-aurelia-eythan.ics';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-});
+// document.getElementById('addToCalendar').addEventListener('click', () => {
+//     const dtStart = '20240401T150000Z'; // 17:00 Paris ≈ 15:00Z heure d'hiver -> ajustez si besoin
+//     const dtEnd = '20240401T210000Z';
+//     const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Wedding Card//FR\nBEGIN:VEVENT\nUID:${Date.now()}@wedding\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Mariage – Aurélia & Eythan\nLOCATION:Palace de Villiers, 12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel\nDESCRIPTION:Houppa 17h00 — Réception à suivre\nEND:VEVENT\nEND:VCALENDAR`;
+//     const blob = new Blob([ics], {type: 'text/calendar'});
+//     const url = URL.createObjectURL(blob);
+//     const a = document.createElement('a');
+//     a.href = url;
+//     a.download = 'mariage-aurelia-eythan.ics';
+//     a.click();
+//     setTimeout(() => URL.revokeObjectURL(url), 2000);
+// });
 
 // --- Reveal + HERO Animations ---
 // window.addEventListener('DOMContentLoaded', () => {
@@ -77,6 +77,17 @@ document.getElementById('addToCalendar').addEventListener('click', () => {
 const music = document.getElementById('weddingMusic');
 let musicPlayed = false;
 
+function fadeOut(audio, duration = 3000) {
+    let step = 0.02; // incrément du volume
+    let interval = duration / (1 / step * 50); // ajuster l'intervalle
+    const fade = setInterval(() => {
+        if (audio.volume > 0) {
+            audio.volume = Math.max(audio.volume - step, 0);
+        } else {
+            clearInterval(fade);
+        }
+    }, interval);
+}
 // Fonction pour faire un fade-in progressif
 function fadeIn(audio, duration = 3000) {
     audio.volume = 0;
@@ -101,16 +112,47 @@ function fadeIn(audio, duration = 3000) {
 // Détecter quand la section #invitation entre dans la fenêtre
 const invitationSection = document.getElementById('invitation');
 
+// Variables pour gérer la musique
+let musicStarted = false;
+const weddingMusic = document.getElementById('weddingMusic');
+
+// Fonction pour vérifier si la section invitation est visible
 function checkSectionInView() {
-    if (musicPlayed) return;
+    const invitationSection = document.getElementById('invitation');
+    if (!invitationSection) return;
 
     const rect = invitationSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-        fadeIn(music, 4000); // fade-in sur 4 secondes
-        musicPlayed = true;
+    const windowHeight = window.innerHeight;
+
+    // Section visible si elle occupe au moins 30% de l'écran
+    const isVisible = rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
+
+    if (isVisible && !musicStarted) {
+        // Démarrer la musique avec fade-in
+        musicStarted = true;
+        fadeIn(weddingMusic, 2000); // fade-in sur 2 secondes
+        console.log('Musique démarrée - Section invitation visible');
+    } else if (!isVisible && musicStarted) {
+        // Arrêter la musique avec fade-out
+        musicStarted = false;
+        fadeOut(weddingMusic, 1500); // fade-out sur 1.5 secondes
+        console.log('Musique arrêtée - Section invitation non visible');
     }
 }
 
+// Détecter quand la section #invitation entre dans la fenêtre
 window.addEventListener('scroll', checkSectionInView, {passive: true});
 window.addEventListener('resize', checkSectionInView);
-checkSectionInView(); // vérifier immédiatement au chargement
+
+// Vérifier immédiatement au chargement de la page
+document.addEventListener('DOMContentLoaded', () => {
+    // Petite temporisation pour s'assurer que tout est chargé
+    setTimeout(checkSectionInView, 100);
+});
+
+// Gérer les interactions utilisateur pour l'autoplay
+document.addEventListener('click', () => {
+    if (musicStarted && weddingMusic.paused) {
+        fadeIn(weddingMusic, 1000);
+    }
+}, {once: true});
