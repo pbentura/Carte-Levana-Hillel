@@ -71,6 +71,56 @@ body {
     line-height: 1.4;
 }
 
+/* Réduction de la taille du texte sur mobile uniquement pour la section invitation */
+@media (max-width: 768px) {
+    #invitation .invitation-font {
+        font-size: 0.5em; /* Réduit la taille de 60% */
+    }
+
+    /* Ajustements spécifiques pour certains éléments dans la section invitation */
+    #invitation .invitation-font.text-3xl {
+        font-size: 1.3rem !important; /* au lieu de text-3xl (1.875rem) */
+    }
+
+    #invitation .invitation-font.text-2xl {
+        font-size: 0.9rem !important; /* au lieu de text-2xl (1.5rem) */
+    }
+
+    #invitation .invitation-font.text-4xl {
+        font-size: 1.4rem !important; /* au lieu de text-4xl (2.25rem) */
+    }
+
+    /* Titre principal des mariés dans la section invitation */
+    #invitation h1.invitation-font.text-4xl,
+    #invitation h1.invitation-font.text-5xl {
+        font-size: 1.9rem !important;
+    }
+
+    /* Texte hébreu dans la section invitation */
+    #invitation .hebrew.text-3xl {
+        font-size: 1.5rem !important;
+    }
+
+    #invitation .hebrew.text-4xl {
+        font-size: 2rem !important;
+    }
+
+    /*!* Countdown en grille 2x2 sur mobile *!*/
+    /*.grid.sm\\:grid-cols-4 {*/
+    /*    grid-template-columns: repeat(2, 1fr) !important;*/
+    /*}*/
+
+    /*!* Ajustement de la taille du texte dans le countdown sur mobile *!*/
+    /*.grid.sm\\:grid-cols-4 .text-4xl {*/
+    /*    font-size: 1.75rem !important;*/
+    /*}*/
+
+    /*!* Réduction du padding des cases countdown sur mobile *!*/
+    /*.grid.sm\\:grid-cols-4 > div {*/
+    /*    padding: 1rem !important;*/
+    /*}*/
+}
+
 /* --- HERO Animations --- */
 @keyframes fadeZoom {
     0% {
