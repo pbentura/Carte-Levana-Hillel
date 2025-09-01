@@ -9,7 +9,7 @@ onScroll();
 document.addEventListener('scroll', onScroll, {passive: true});
 
 // Countdown to a specific date (set to 2026-04-01 17:00 local)
-const target = new Date('2026-08-31T17:00:00');
+const target = new Date('2025-10-20T18:00:00');
 
 function tick() {
     const now = new Date();
