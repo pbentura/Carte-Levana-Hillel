@@ -121,6 +121,42 @@ body {
     /*}*/
 }
 
+/* Style spécial pour le PDF */
+.pdf-section {
+    background: white;
+    padding: 60px 40px;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.pdf-section .divider {
+    display: none;
+}
+
+/* Bouton de téléchargement PDF */
+.pdf-download-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.pdf-download-btn:hover {
+    background: var(--deep);
+    transform: scale(1.1);
+}
+
 /* --- HERO Animations --- */
 @keyframes fadeZoom {
     0% {
@@ -187,4 +223,33 @@ body {
         transform: translateY(0) translateX(0);
         opacity: 0;
     }
+}
+
+/* Loading spinner pour le PDF */
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--gold);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

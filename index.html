@@ -12,19 +12,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="paper">
 <!-- Decorative corners -->
-<svg class="corner top-0 left-0 w-28 sm:w-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3"
-          stroke-linecap="round"/>
-</svg>
-<svg class="corner bottom-0 right-0 w-28 sm:w-40 rotate-180" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3"
-          stroke-linecap="round"/>
-</svg>
+<!--<svg class="corner top-0 left-0 w-28 sm:w-40" viewBox="0 0 200 200" fill="none" aria-hidden="true">-->
+<!--    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3"-->
+<!--          stroke-linecap="round"/>-->
+<!--</svg>-->
+<!--<svg class="corner bottom-0 right-0 w-28 sm:w-40 rotate-180" viewBox="0 0 200 200" fill="none" aria-hidden="true">-->
+<!--    <path d="M10 150 C40 130, 80 120, 110 90 C140 60, 160 30, 190 10" stroke="#c8a96a" stroke-width="3"-->
+<!--          stroke-linecap="round"/>-->
+<!--</svg>-->
 
 <!-- HERO -->
 <header class="relative overflow-hidden min-h-screen flex items-center justify-center
@@ -126,6 +129,14 @@
         <p class="mt-4 text-2xl invitation-font">Une tenue dans le respect de la Halakha réjouira les mariés.</p>
     </div>
 
+    <!-- Bouton de téléchargement PDF dans la section -->
+    <div class="text-center mt-8">
+        <button id="downloadPdf" onclick="generatePDF()" class="script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl flex items-center gap-2 mx-auto">
+            <i class="fas fa-download"></i>
+            Télécharger l'invitation
+        </button>
+    </div>
+
 </section>
 
 <!-- INFOS & MAP -->
@@ -204,7 +215,7 @@
     <div class="divider mb-8"></div>
     <div class="bg-white/80 p-6 sm:p-8 rounded-3xl  reveal text-center">
         <h2 class="invitation-font text-gold text-[color:var(--deep)] text-4xl">Nous serions très heureux de vous voir parmi nous</h2>
-        <a href="https://forms.gle/" target="_blank"
+        <a href="https://forms.gle/9HProMWK5SCy63Ja7" target="_blank"
            class="inline-block mt-4 script text-gold hero-title px-6 py-3 rounded-2xl border border-[color:var(--gold)] text-[color:var(--deep)] hover:bg-[color:var(--gold)] transition text-lg sm:text-xl">
             Votre réponse
         </a>
@@ -217,6 +228,12 @@
     <div class="divider mb-8"></div>
     <p>Site réalisé par <a class="underline" href="https://www.linkedin.com/in/pinhas-bentura-1ab82029b">Pinhas Bentura</a></p>
 </footer>
+
+<!-- Loading spinner -->
+<div class="loading-spinner" id="loadingSpinner">
+    <div class="spinner"></div>
+    <p class="invitation-font text-lg text-center">Génération du PDF...</p>
+</div>
 
 <audio id="weddingMusic" loop>
     <source src="musique.mp3" type="audio/mpeg">

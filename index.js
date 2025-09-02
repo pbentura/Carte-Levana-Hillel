@@ -8,7 +8,7 @@ const onScroll = () => {
 onScroll();
 document.addEventListener('scroll', onScroll, {passive: true});
 
-// Countdown to a specific date (set to 2026-04-01 17:00 local)
+// Countdown to a specific date
 const target = new Date('2025-10-20T18:00:00');
 
 function tick() {
@@ -21,9 +21,8 @@ function tick() {
         document.getElementById('minutes').textContent = "0";
         document.getElementById('seconds').textContent = "0";
 
-// Afficher le message spécial
         const countdown = document.getElementById('countdown');
-        countdown.innerHTML = `<p class="invitation-font text-4xl text-gold mt-4">C’est aujourd’hui !</p>`;
+        countdown.innerHTML = `<p class="invitation-font text-4xl text-gold mt-4">C'est aujourd'hui !</p>`;
         return;
     }
 
@@ -38,68 +37,23 @@ function tick() {
     document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
 }
 
-
 setInterval(tick, 1000);
-tick(); // lancement immédiat
+tick();
 
-
-// Add to Calendar (.ics)
-// document.getElementById('addToCalendar').addEventListener('click', () => {
-//     const dtStart = '20240401T150000Z'; // 17:00 Paris ≈ 15:00Z heure d'hiver -> ajustez si besoin
-//     const dtEnd = '20240401T210000Z';
-//     const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Wedding Card//FR\nBEGIN:VEVENT\nUID:${Date.now()}@wedding\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Mariage – Aurélia & Eythan\nLOCATION:Palace de Villiers, 12 Avenue des Entrepreneurs, 95400 Villiers-le-Bel\nDESCRIPTION:Houppa 17h00 — Réception à suivre\nEND:VEVENT\nEND:VCALENDAR`;
-//     const blob = new Blob([ics], {type: 'text/calendar'});
-//     const url = URL.createObjectURL(blob);
-//     const a = document.createElement('a');
-//     a.href = url;
-//     a.download = 'mariage-aurelia-eythan.ics';
-//     a.click();
-//     setTimeout(() => URL.revokeObjectURL(url), 2000);
-// });
-
-// --- Reveal + HERO Animations ---
-// window.addEventListener('DOMContentLoaded', () => {
-//     const heroTitle = document.querySelector('.hero-title');
-//     setTimeout(() => heroTitle.style.opacity = '1', 100); // fade in léger
-//
-//     // Générer des particules dans le HERO
-//     const heroSection = document.querySelector('header');
-//     for (let i = 0; i < 30; i++) {
-//         const p = document.createElement('div');
-//         p.className = 'particle';
-//         p.style.top = Math.random() * 70 + '%';
-//         p.style.left = Math.random() * 90 + '%';
-//         p.style.animationDuration = (3 + Math.random() * 10) + 's';
-//         heroSection.appendChild(p);
-//     }
-// });
-
+// Music functionality (simplified)
 const music = document.getElementById('weddingMusic');
-let musicPlayed = false;
+let musicStarted = false;
 
-function fadeOut(audio, duration = 3000) {
-    let step = 0.02; // incrément du volume
-    let interval = duration / (1 / step * 50); // ajuster l'intervalle
-    const fade = setInterval(() => {
-        if (audio.volume > 0) {
-            audio.volume = Math.max(audio.volume - step, 0);
-        } else {
-            clearInterval(fade);
-        }
-    }, interval);
-}
-// Fonction pour faire un fade-in progressif
 function fadeIn(audio, duration = 3000) {
     audio.volume = 0;
     audio.play().catch(() => {
-// si autoplay bloqué, attendre clic utilisateur
         document.body.addEventListener('click', () => {
             fadeIn(audio, duration);
         }, {once: true});
     });
 
-    let step = 0.02; // incrément du volume
-    let interval = duration / (1 / step * 50); // ajuster l'intervalle
+    let step = 0.02;
+    let interval = duration / (1 / step * 50);
     const fade = setInterval(() => {
         if (audio.volume < 1) {
             audio.volume = Math.min(audio.volume + step, 1);
@@ -109,14 +63,18 @@ function fadeIn(audio, duration = 3000) {
     }, interval);
 }
 
-// Détecter quand la section #invitation entre dans la fenêtre
-const invitationSection = document.getElementById('invitation');
+function fadeOut(audio, duration = 3000) {
+    let step = 0.02;
+    let interval = duration / (1 / step * 50);
+    const fade = setInterval(() => {
+        if (audio.volume > 0) {
+            audio.volume = Math.max(audio.volume - step, 0);
+        } else {
+            clearInterval(fade);
+        }
+    }, interval);
+}
 
-// Variables pour gérer la musique
-let musicStarted = false;
-const weddingMusic = document.getElementById('weddingMusic');
-
-// Fonction pour vérifier si la section invitation est visible
 function checkSectionInView() {
     const invitationSection = document.getElementById('invitation');
     if (!invitationSection) return;
@@ -124,35 +82,107 @@ function checkSectionInView() {
     const rect = invitationSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Section visible si elle occupe au moins 30% de l'écran
     const isVisible = rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
 
     if (isVisible && !musicStarted) {
-        // Démarrer la musique avec fade-in
         musicStarted = true;
-        fadeIn(weddingMusic, 2000); // fade-in sur 2 secondes
-        console.log('Musique démarrée - Section invitation visible');
+        fadeIn(music, 2000);
     } else if (!isVisible && musicStarted) {
-        // Arrêter la musique avec fade-out
         musicStarted = false;
-        fadeOut(weddingMusic, 1500); // fade-out sur 1.5 secondes
-        console.log('Musique arrêtée - Section invitation non visible');
+        fadeOut(music, 1500);
     }
 }
 
-// Détecter quand la section #invitation entre dans la fenêtre
 window.addEventListener('scroll', checkSectionInView, {passive: true});
 window.addEventListener('resize', checkSectionInView);
-
-// Vérifier immédiatement au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
-    // Petite temporisation pour s'assurer que tout est chargé
     setTimeout(checkSectionInView, 100);
 });
 
-// Gérer les interactions utilisateur pour l'autoplay
+// PDF Generation Functionality
+async function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const loadingSpinner = document.getElementById('loadingSpinner');
+
+    try {
+        // Afficher le spinner de chargement
+        loadingSpinner.style.display = 'block';
+
+        // Sélectionner la section invitation
+        const invitationSection = document.getElementById('invitation');
+
+        // Créer un clone de la section pour la modifier pour le PDF
+        const clone = invitationSection.cloneNode(true);
+        clone.classList.add('pdf-section');
+
+        // Supprimer le bouton de téléchargement du clone
+        const downloadBtn = clone.querySelector('#downloadPdf');
+        if (downloadBtn) downloadBtn.remove();
+
+        // Ajouter le clone au body temporairement (caché)
+        clone.style.position = 'absolute';
+        clone.style.top = '-10000px';
+        clone.style.left = '-10000px';
+        clone.style.width = '800px'; // Largeur fixe pour le PDF
+        document.body.appendChild(clone);
+
+        // Attendre que les polices se chargent
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // Capturer la section avec html2canvas
+        const canvas = await html2canvas(clone, {
+            scale: 2, // Haute qualité
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            width: 800,
+            height: clone.offsetHeight,
+        });
+
+        // Supprimer le clone
+        document.body.removeChild(clone);
+
+        // Créer le PDF
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+
+        // Calculer les dimensions pour centrer l'image
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+
+        const canvasAspectRatio = canvas.height / canvas.width;
+        const maxWidth = pdfWidth - 20; // Marges de 10mm de chaque côté
+        const maxHeight = pdfHeight - 20; // Marges de 10mm en haut et en bas
+
+        let imgWidth = maxWidth;
+        let imgHeight = imgWidth * canvasAspectRatio;
+
+        // Si l'image est trop haute, ajuster
+        if (imgHeight > maxHeight) {
+            imgHeight = maxHeight;
+            imgWidth = imgHeight / canvasAspectRatio;
+        }
+
+        const xPos = (pdfWidth - imgWidth) / 2;
+        const yPos = (pdfHeight - imgHeight) / 2;
+
+        // Ajouter l'image au PDF
+        pdf.addImage(imgData, 'PNG', xPos, yPos, imgWidth, imgHeight);
+
+        // Télécharger le PDF
+        pdf.save('Invitation-Mariage-Levana-Hillel.pdf');
+
+    } catch (error) {
+        console.error('Erreur lors de la génération du PDF:', error);
+        alert('Une erreur est survenue lors de la génération du PDF. Veuillez réessayer.');
+    } finally {
+        // Cacher le spinner de chargement
+        loadingSpinner.style.display = 'none';
+    }
+}
+
+
 document.addEventListener('click', () => {
-    if (musicStarted && weddingMusic.paused) {
-        fadeIn(weddingMusic, 1000);
+    if (musicStarted && music.paused) {
+        fadeIn(music, 1000);
     }
 }, {once: true});
