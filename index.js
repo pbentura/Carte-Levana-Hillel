@@ -75,6 +75,8 @@ function fadeOut(audio, duration = 3000) {
     }, interval);
 }
 
+const musicControlBtn = document.getElementById('musicControlBtn');
+
 function checkSectionInView() {
     const invitationSection = document.getElementById('invitation');
     if (!invitationSection) return;
@@ -86,100 +88,32 @@ function checkSectionInView() {
 
     if (isVisible && !musicStarted) {
         musicStarted = true;
+
         fadeIn(music, 2000);
-    } else if (!isVisible && musicStarted) {
-        musicStarted = false;
-        fadeOut(music, 1500);
+
+        musicControlBtn.classList.remove('hidden');
+        musicControlBtn.querySelector('i').className = 'fa-solid fa-volume-xmark';
     }
 }
+
+musicControlBtn.addEventListener('click', () => {
+    console.log(music.paused);
+    if (music.paused) {
+
+        fadeIn(music, 1000);
+        musicControlBtn.querySelector('i').className = 'fa-solid fa-volume-high';
+    } else {
+        fadeOut(music, 1000);
+        musicControlBtn.querySelector('i').className = 'fa-solid fa-volume-xmark';
+    }
+});
+
 
 window.addEventListener('scroll', checkSectionInView, {passive: true});
 window.addEventListener('resize', checkSectionInView);
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(checkSectionInView, 100);
 });
-
-// PDF Generation Functionality
-async function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const loadingSpinner = document.getElementById('loadingSpinner');
-
-    try {
-        // Afficher le spinner de chargement
-        loadingSpinner.style.display = 'block';
-
-        // Sélectionner la section invitation
-        const invitationSection = document.getElementById('invitation');
-
-        // Créer un clone de la section pour la modifier pour le PDF
-        const clone = invitationSection.cloneNode(true);
-        clone.classList.add('pdf-section');
-
-        // Supprimer le bouton de téléchargement du clone
-        const downloadBtn = clone.querySelector('#downloadPdf');
-        if (downloadBtn) downloadBtn.remove();
-
-        // Ajouter le clone au body temporairement (caché)
-        clone.style.position = 'absolute';
-        clone.style.top = '-10000px';
-        clone.style.left = '-10000px';
-        clone.style.width = '800px'; // Largeur fixe pour le PDF
-        document.body.appendChild(clone);
-
-        // Attendre que les polices se chargent
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        // Capturer la section avec html2canvas
-        const canvas = await html2canvas(clone, {
-            scale: 2, // Haute qualité
-            useCORS: true,
-            backgroundColor: '#ffffff',
-            width: 800,
-            height: clone.offsetHeight,
-        });
-
-        // Supprimer le clone
-        document.body.removeChild(clone);
-
-        // Créer le PDF
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-
-        // Calculer les dimensions pour centrer l'image
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-
-        const canvasAspectRatio = canvas.height / canvas.width;
-        const maxWidth = pdfWidth - 20; // Marges de 10mm de chaque côté
-        const maxHeight = pdfHeight - 20; // Marges de 10mm en haut et en bas
-
-        let imgWidth = maxWidth;
-        let imgHeight = imgWidth * canvasAspectRatio;
-
-        // Si l'image est trop haute, ajuster
-        if (imgHeight > maxHeight) {
-            imgHeight = maxHeight;
-            imgWidth = imgHeight / canvasAspectRatio;
-        }
-
-        const xPos = (pdfWidth - imgWidth) / 2;
-        const yPos = (pdfHeight - imgHeight) / 2;
-
-        // Ajouter l'image au PDF
-        pdf.addImage(imgData, 'PNG', xPos, yPos, imgWidth, imgHeight);
-
-        // Télécharger le PDF
-        pdf.save('Invitation-Mariage-Levana-Hillel.pdf');
-
-    } catch (error) {
-        console.error('Erreur lors de la génération du PDF:', error);
-        alert('Une erreur est survenue lors de la génération du PDF. Veuillez réessayer.');
-    } finally {
-        // Cacher le spinner de chargement
-        loadingSpinner.style.display = 'none';
-    }
-}
-
 
 document.addEventListener('click', () => {
     if (musicStarted && music.paused) {
